@@ -187,7 +187,7 @@ class Nested_scroll : AppCompatActivity() {
         var clear_length = 0
         var send_clear_length = ""
         var object_string =""
-        
+
 
         if(spinner_val == "Table_1") {
             clear = "Clear_Table_1"
