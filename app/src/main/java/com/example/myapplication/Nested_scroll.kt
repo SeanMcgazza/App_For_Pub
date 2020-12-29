@@ -48,10 +48,11 @@ class Nested_scroll : AppCompatActivity() {
 //        val address = Formatter.formatIpAddress(wifiManager.connectionInfo.ipAddress)
 //        val myIP =  InetAddress.getLocalHost()
 //
-        val address = "192.168.1.9"
+        val address = "192.168.43.115"
         val port = 5050
 
         var spinner_val = ""
+        var object_string =""
 
         var order_total = 0
         var total_list:MutableList<Int> = mutableListOf()
@@ -185,18 +186,8 @@ class Nested_scroll : AppCompatActivity() {
         var clear = ""
         var clear_length = 0
         var send_clear_length = ""
-
-//        val clear = "Clear"
-//
-//        val clear_length = clear.length
-//        val send_clear_length = clear_length.toString()
-//
-//        writer.write(send_clear_length.toByteArray())
-//        writer.flush()
-//
-//        writer.write(clear.toByteArray())
-//        writer.flush()
-//        delay(150)
+        var object_string =""
+        
 
         if(spinner_val == "Table_1") {
             clear = "Clear_Table_1"
@@ -229,31 +220,18 @@ class Nested_scroll : AppCompatActivity() {
         writer.write(spinner_val.toByteArray())
         writer.flush()
 
-        for(item in order_list){
-            val my_order_length = item.length
+        for(item in order_list) {
+
+            object_string += item + " "
+        }
+            val my_order_length = object_string.length
             val send_length = my_order_length.toString()
             writer.write(send_length.toByteArray())
             writer.flush()
             delay(100)
-//                Timer().schedule(10000){
-            writer.write(item.toByteArray())
+            writer.write(object_string.toByteArray())
             writer.flush()
-//                }
-//            writer.write(send_length.toByteArray())
-//            writer.flush()
-//            Timer().schedule(1000){
-//                writer.write(item.toByteArray())
-//                writer.flush()
-//            }
 
-//            val reader = connection.getInputStream()
-//            val input =reader.read()
-//            while(input.toString() != "MSG received"){
-//
-//            }
-//            reader.close()
-
-        }
         val send_dis = "!DISCONNECT"
         val dissconect = send_dis.length
         val dissconect_mess = dissconect.toString()
@@ -265,8 +243,6 @@ class Nested_scroll : AppCompatActivity() {
         }
         order_list.clear()
 
-//        writer.close()
-//        connection.close()
     }
 
 }
